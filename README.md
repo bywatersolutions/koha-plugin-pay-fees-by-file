@@ -1,6 +1,6 @@
 # Pay Fees by File
 
-The plugin accepts CSV files with columns of the following formats:
+This plugin accepts CSV files with columns of the following formats:
 * Cardnumber,Amount to Pay
 * Cardnumber,Fee Id
 and will make the payments accordingly.
