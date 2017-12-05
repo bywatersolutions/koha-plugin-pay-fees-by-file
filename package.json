@@ -1,8 +1,8 @@
 {
-  "name": "koha-plugin-peoplesoft-converter",
-  "version": "1.0.1",
+  "name": "koha-plugin-pay-fees-by-file",
+  "version": "1.0.0",
   "previous_version": "1.0.0",
-  "description": "Koha PeopleSoft Converter Plugin",
+  "description": "Koha Pay Fees by File Plugin",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-cli": "^1.2.2",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bywatersolutions/koha-plugin-peoplesoft-converter.git"
+    "url": "git+https://github.com/bywatersolutions/koha-plugin-pay-fees-by-file.git"
   },
   "author": "Kyle M Hall <kyle@bywatersolutions.com>",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/bywatersolutions/koha-plugin-peoplesoft-converter/issues"
+    "url": "https://github.com/bywatersolutions/koha-plugin-pay-fees-by-file/issues"
   },
-  "homepage": "https://github.com/bywatersolutions/koha-plugin-peoplesoft-converter#readme",
+  "homepage": "https://github.com/bywatersolutions/koha-plugin-pay-fees-by-file#readme",
   "dependencies": {
     "datetime": "0.0.3",
     "gulp-replace": "^0.6.1",

@@ -10,7 +10,7 @@ Some information, such as borrowernumber and check-outs will be automatically co
 
 # Downloading
 
-From the [release page](https://github.com/bywatersolutions/koha-plugin-peoplesoft-converter/releases) you can download the relevant *.kpz file
+From the [release page](https://github.com/bywatersolutions/koha-plugin-pay-fees-by-file/releases) you can download the relevant *.kpz file
 
 # Installing
 

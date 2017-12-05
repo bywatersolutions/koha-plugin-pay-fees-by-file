@@ -1,0 +1,51 @@
+[% USE Price %]
+[% INCLUDE 'doc-head-open.inc' %]
+ <title>Koha: Pay Fees by File: Results</title>
+[% INCLUDE 'doc-head-close.inc' %]
+</head>
+<body>
+[% INCLUDE 'header.inc' %]
+[% INCLUDE 'cat-search.inc' %]
+
+<div id="breadcrumbs"><a href="/cgi-bin/koha/mainpage.pl">Home</a> &rsaquo; <a href="/cgi-bin/koha/plugins/plugins-home.pl">Plugins</a> &rsaquo; Pay Fees by File &rsaquo; Results</div>
+
+<div id="doc3">
+
+    [% IF error %]
+        [% IF error == 'UNKNOWN_FORMAT' %]
+            <p>Unkown file format!</p>
+            <p>
+                Acceptable file formats include:
+                <ul>
+                    <li>Cardnumber,Amount to Pay</li>
+                    <li>Cardnumber,Fee ID</li>
+                </ul>
+            </p>
+        [% END %]
+    [% END %]
+
+    <table class="table striped table-bordered">
+        <thead>
+            <tr>
+                <th>Cardnumber</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+            [% FOREACH line IN lines %]
+                <tr class="[% IF line.error %]danger[% END %]">
+                    <td>
+                        [% line.Cardnumber %]
+                    </td>
+                    <td>
+                        [% IF line.error %]
+                            Error: [% line.error %]
+                        [% ELSE %]
+                            Success: [% line.payment.amount * -1 | $Price %]
+                        [% END %]
+                    </td>
+                </tr>
+            [% END %]
+        </tbody>
+    </table>
+[% INCLUDE 'intranet-bottom.inc' %]
