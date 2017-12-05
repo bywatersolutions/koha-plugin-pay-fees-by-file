@@ -14,5 +14,5 @@ then
     git push github HEAD:master
   fi
 else
-  echo "No release needing."
+  echo "No release needed."
 fi
