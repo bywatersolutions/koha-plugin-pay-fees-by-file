@@ -1,5 +1,9 @@
 # Pay Fees by File
 
+Written for Karachi IBA to import payments from PeopleSoft.
+
+**Warning:** This plugin has no safety checks. Uploading the same payments file twice will cause duplicate payments. Use are your own risk and excercise caution!
+
 This plugin accepts CSV files with columns of the following formats:
 
 * Cardnumber,Amount to Pay
