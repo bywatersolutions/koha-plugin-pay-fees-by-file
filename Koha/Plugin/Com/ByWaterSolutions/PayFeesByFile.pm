@@ -100,6 +100,7 @@ sub tool_step2 {
     my $template = $self->get_template( { file => 'tool-step2.tt' } );
 
     my $filehandle = $cgi->upload('payments');
+    my $comment = $cgi->param('comment');
 
     my $csv = Text::CSV_XS->new();
 
@@ -115,7 +116,7 @@ sub tool_step2 {
     }
 
     if ( $lines[0]->{'Amount to Pay'} && $lines[0]->{Cardnumber} ) {
-        warn "Pay by Amount";
+        #warn "Pay by Amount";
         foreach my $line (@lines) {
             my $cardnumber = $line->{Cardnumber};
             my $amount     = $line->{'Amount to Pay'};
@@ -126,6 +127,7 @@ sub tool_step2 {
                 my $account = $patron->account;
                 my $payment = $account->pay(
                     {
+                        note   => $comment,
                         amount => $amount,
                     }
                 );
@@ -137,7 +139,7 @@ sub tool_step2 {
         }
     }
     elsif ( $lines[0]->{'Fee ID'} && $lines[0]->{Cardnumber} ) {
-        warn "Pay by Fee ID";
+        #warn "Pay by Fee ID";
         foreach my $line (@lines) {
             my $cardnumber      = $line->{Cardnumber};
             my $accountlines_id = $line->{'Fee ID'};
@@ -155,8 +157,9 @@ sub tool_step2 {
                 my $account = $patron->account;
                 my $payment = $account->pay(
                     {
-                        amount => $accountline->amountoutstanding,,
-                        lines => [ $accountline ],
+                        note   => $comment,
+                        amount => $accountline->amountoutstanding,
+                        lines  => [ $accountline ],
                     }
                 );
                 $line->{payment} = $payment;
@@ -164,11 +167,11 @@ sub tool_step2 {
         }
     }
     else {
-        warn('Payment CSV file does not match a known format');
+        #warn('Payment CSV file does not match a known format');
         $template->param(error => 'UNKNOWN_FORMAT');
     }
 
-    warn Data::Dumper::Dumper( \@lines );
+    #warn Data::Dumper::Dumper( \@lines );
     $template->param( lines => \@lines );
 
     print $cgi->header();
