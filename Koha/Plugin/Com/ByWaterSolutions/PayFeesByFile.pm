@@ -24,7 +24,7 @@ our $metadata = {
     description     => 'This plugin accepts CSV files of the format "Fee Id/Cardnumber" or "Cardnumber/Amount to pay" and makes the appropriate payment',
     date_authored   => '2017-12-05',
     date_updated    => '1900-01-01',
-    minimum_version => '17.05',
+    minimum_version => '20.05',
     maximum_version => undef,
     version         => $VERSION,
 };
@@ -131,7 +131,7 @@ sub tool_step2 {
                         amount => $amount,
                     }
                 );
-                $line->{payment} = Koha::Account::Lines->find( $payment );
+                $line->{payment} = Koha::Account::Lines->find( $payment->{payment_id} );
             }
             else {
                 $line->{error} = 'Patron not found';
