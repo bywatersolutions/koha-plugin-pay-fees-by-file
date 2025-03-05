@@ -12,6 +12,7 @@
     <p>Upload Payments CSV file</p>
 
     <form method="post" enctype="multipart/form-data">
+        [% INCLUDE 'csrf-token.inc' %]
         <input type="hidden" name="class" value="[% CLASS %]"/>
         <input type="hidden" name="method" value="[% METHOD %]"/>
         <p>Add comment: <input name="comment" type="text" value="Posted in ERP Financials" />
